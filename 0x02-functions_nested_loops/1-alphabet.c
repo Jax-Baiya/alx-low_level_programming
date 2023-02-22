@@ -5,10 +5,6 @@
  *
  * Return: void
  */
-void print_alphabet(void)
-{
-	/* code goes here */
-}
 
 void print_alphabet(void)
 {
