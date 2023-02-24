@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include "main.h"
 #include "3-convert_day.h"
 
 /**
