@@ -1,80 +1,46 @@
 #include "main.h"
-
 #include <stdlib.h>
 
 /**
-
- * argstostr - main entry
-
- * @ac: int input
-
- * @av: double pointer array
-
- * Return: 0
-
+ * argstostr - Concatenates all the arguments of your program into a single
+ *              string.
+ * @ac: The number of arguments passed to the program
+ * @av: An array of pointers to the arguments
+ *
+ * Return: If ac == 0, av == NULL, or malloc() fails, returns NULL.
+ *         Otherwise, returns a pointer to the new string.
  */
-
 char *argstostr(int ac, char **av)
-
 {
+int i, j, k = 0, len = 0;
+char *str;
 
-	int i, n, r = 0, l = 0;
+if (ac == 0 || av == NULL)
+return (NULL);
 
-	char *str;
+for (i = 0; i < ac; i++)
+{
+for (j = 0; av[i][j]; j++)
+len++;
+len++; /* account for space between words */
+}
+len++; /* account for null terminator */
 
+str = malloc(sizeof(char) * len);
+if (str == NULL)
+return (NULL);
 
-
-	if (ac == 0 || av == NULL)
-
-		return (NULL);
-
-
-
-	for (i = 0; i < ac; i++)
-
-	{
-
-		for (n = 0; av[i][n]; n++)
-
-			l++;
-
-	}
-
-	l += ac;
-
-
-
-	str = malloc(sizeof(char) * l + 1);
-
-	if (str == NULL)
-
-		return (NULL);
-
-	for (i = 0; i < ac; i++)
-
-	{
-
-	for (n = 0; av[i][n]; n++)
-
-	{
-
-		str[r] = av[i][n];
-
-		r++;
-
-	}
-
-	if (str[r] == '\0')
-
-	{
-
-		str[r++] = '\n';
-
-	}
-
-	}
-
-	return (str);
-
+for (i = 0; i < ac; i++)
+{
+for (j = 0; av[i][j]; j++)
+{
+str[k] = av[i][j];
+k++;
+}
+str[k] = '\n';
+k++;
+}
+str[k] = '\0';
+return (str);
 }
 
