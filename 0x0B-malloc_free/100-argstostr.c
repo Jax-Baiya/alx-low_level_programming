@@ -2,45 +2,48 @@
 #include <stdlib.h>
 
 /**
- * argstostr - Concatenates all the arguments of your program into a single
- *              string.
- * @ac: The number of arguments passed to the program
- * @av: An array of pointers to the arguments
+ * argstostr - concatenates all the arguments of your program.
+ * @ac: arguments count
+ * @av: arguments vector
  *
- * Return: If ac == 0, av == NULL, or malloc() fails, returns NULL.
- *         Otherwise, returns a pointer to the new string.
+ * Return: a pointer to a new string, or NULL if it fails
  */
 char *argstostr(int ac, char **av)
 {
-int i, j, k = 0, len = 0;
-char *str;
+	char *str, *s;
+	int i, j, k, len = 0;
 
-if (ac == 0 || av == NULL)
-return (NULL);
+	if (ac == 0 || av == NULL)
+		return (NULL);
 
-for (i = 0; i < ac; i++)
-{
-for (j = 0; av[i][j]; j++)
-len++;
-len++; /* account for space between words */
+	for (i = 0; i < ac; i++)
+	{
+		s = av[i];
+		j = 0;
+
+		while (s[j++])
+			len++;
+		len++;
+	}
+
+	str = (char *)malloc(sizeof(char) * (len + 1));
+	if (str == NULL)
+		return (NULL);
+
+	for (i = 0, j = 0; i < ac && j < len; i++)
+	{
+		s = av[i];
+		k = 0;
+
+		while (s[k])
+		{
+			str[j] = s[k];
+			k++;
+			j++;
+		}
+		str[j++] = '\n';
+	}
+	str[j] = '\0';
+
+	return (str);
 }
-len++; /* account for null terminator */
-
-str = malloc(sizeof(char) * len);
-if (str == NULL)
-return (NULL);
-
-for (i = 0; i < ac; i++)
-{
-for (j = 0; av[i][j]; j++)
-{
-str[k] = av[i][j];
-k++;
-}
-str[k] = '\n';
-k++;
-}
-str[k] = '\0';
-return (str);
-}
-

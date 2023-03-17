@@ -8,8 +8,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": false,
-      "cwd": "/home/alx-low_level_programming/0x0A-argc_argv",
-      "program": "/home/alx-low_level_programming/0x0A-argc_argv/build/Debug/outDebug",
+      "cwd": "/home/alx-low_level_programming/0x0B-malloc_free",
+      "program": "/home/alx-low_level_programming/0x0B-malloc_free/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [
