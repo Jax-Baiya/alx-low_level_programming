@@ -1,4 +1,4 @@
-Auhor : Jax Baiya
+Author : Jax Baiya
 title : Singly links
 project : 0x12C
 
